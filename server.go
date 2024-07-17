@@ -100,7 +100,7 @@ func (s *Server) getTargetURL(r *http.Request) string {
 	return fmt.Sprintf("http://%s:%d", s.Config.DefaultRoute.IP, s.Config.DefaultRoute.Port)
 }
 
-// BotChecker checks if the User-Agent belongs to a bot and blocks if necessary.
+// botChecker checks if the User-Agent belongs to a bot and blocks if necessary.
 func (s *Server) botChecker(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		userAgent := r.UserAgent()
@@ -112,7 +112,7 @@ func (s *Server) botChecker(next http.Handler) http.Handler {
 	})
 }
 
-// RateLimiter applies rate limiting to requests.
+// rateLimiter applies rate limiting to requests.
 func (s *Server) rateLimiter(next http.Handler) http.Handler {
 	limiter := rate.NewLimiter(rate.Limit(s.Config.Limiter.RPS), s.Config.Limiter.Burst)
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
