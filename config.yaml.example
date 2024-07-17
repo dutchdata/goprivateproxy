@@ -1,0 +1,35 @@
+port: 8080
+limiter:
+  rps: 20
+  burst: 40
+botBlockList:
+  - "bot"
+  - "crawl"
+  - "spider"
+  - "slurp"
+  - "zgrab"
+  - "semrush"
+  - "python-requests"
+  - "censys"
+  - "facebot"
+  - "twitterbot"
+permittedBots:
+  - "googlebot"
+  - "bingbot"
+  - "duckduckbot"
+otherRoutes:
+  - ip: "10.0.140.23"
+    port: 8080
+    path: "stripe"
+  - ip: "10.0.140.24"
+    port: 8080
+    path: "mobile"
+  - ip: "10.0.140.23"
+    port: 8080
+    path: "/stripe"
+  - ip: "10.0.140.24"
+    port: 8080
+    path: "/mobile"
+defaultRoute:
+  ip: "10.0.140.22"
+  port: 8080
